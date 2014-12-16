@@ -1,0 +1,21 @@
+{
+  "name": "angular-tuts",
+  "version": "0.0.0",
+  "authors": [
+    "Daniela Baron <baron.daniela@gmail.com>"
+  ],
+  "description": "Learning Angular with TutsPlus",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.2.21",
+    "bootstrap": "~3.3.1"
+  }
+}

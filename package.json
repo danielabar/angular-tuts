@@ -1,0 +1,14 @@
+{
+  "name": "angular-tuts",
+  "version": "0.0.0",
+  "description": "Learning Angular with TutsPlus",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "danielabar",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.10.6"
+  }
+}
