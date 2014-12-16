@@ -9,6 +9,7 @@
   "author": "danielabar",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.10.6"
+    "express": "^4.10.6",
+    "morgan": "^1.5.0"
   }
 }
