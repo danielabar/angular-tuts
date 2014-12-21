@@ -1,17 +1,15 @@
-<h2>New Contact</h2>
+<h2> New Contact </h2>
 
-<!-- Angular uses name property of form to make the object available in $scope -->
-<!-- novalidate turns off native browser validation, because we want Angular validation instead -->
-<form name="newContact" novalidate class="form-horizontal">
+<form name='newContact' novalidate class='form-horizontal'>
+  <form-field record='contact' field='firstName' live='false' required='true'></form-field>
+  <form-field record='contact' field='lastName' live='false' required='true'></form-field>
+  <form-field ng-repeat='(k,v) in contact' record='contact' field='{{k}}'></form-field>
 
-  <!-- Custom directive for interacting with the form -->
-  <!-- 'live' attribute is because this directive will also be used for update, and we want updates to be saved as user types -->
-  <form-field record="contact" field="firstName" live="false" required="true"></form-field>
+  <new-field record='contact' live='false'></new-field>
 
-  <div class="row form-group">
-    <div class="col-sm-offset-2">
-      <button class="btn btn-primary" ng-click="save()">Create Contact</button>
+  <div class='row form-group'>
+    <div class='col-sm-offset-2'>
+      <button class='btn btn-primary' ng-click='save()'> Create Contact </button>
     </div>
   </div>
-
 </form>
