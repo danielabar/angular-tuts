@@ -1,0 +1,33 @@
+<!-- Template for form-field directive -->
+
+<!-- ng-form attribute is used so the directive can validate itself -->
+<!-- 'has-error' css class will only be added if the field is dirty (i.e. changed, opposite of pristine) and invalid -->
+<div class="row form-group" ng-form="{{field}}" ng-class="{ 'has-error': {{field}}.$dirty && {{field}}.$invalid }">
+  <label class="col-sm-2 control-label"> {{field | labelCase}} <span ng-if="required">*</span> </label>
+
+  <div class="col-sm-6" ng-switch="required">
+
+    <!-- This input will only be shown when the field is required -->
+    <!-- Why does type need to be in double curly braces? -->
+    <input ng-switch-when="true" ng-model="record[field][0]" type="{{record[field][1]}}"
+      class="form-control" required ng-change="update()" ng-blur="burUpdate()" />
+
+    <!-- This will only be sown when the field is NOT required -->
+    <div class="input-group" ng-switch-default>
+      <input ng-model="record[field][0]" type="{{record[field][1]}}"
+        class="form-control" ng-change="update()" ng-blur="burUpdate()" />
+        <div class="input-group-btn">
+          <button class="btn btn-default" ng-click="remove(field)">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </button>
+        </div>
+    </div>
+  </div>
+
+  <!-- Validation messages displayed using ng-messages -->
+  <div class="col-sm-4 has-error" ng-show="{{field}}.$dirty && {{field}}.$invalid }"ng-messages="{{field}}.$error">
+    <p class="control-label" ng-message="required">{{ field | labelCase}} is required.</p>
+    <p class="control-label" ng-repeat="(k, v) in types" ng-message="{{k}}">{{ field | lebaleCase }} {{v[1]}}</p>
+  </div>
+
+</div>

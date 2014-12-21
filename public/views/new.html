@@ -4,7 +4,9 @@
 <!-- novalidate turns off native browser validation, because we want Angular validation instead -->
 <form name="newContact" novalidate class="form-horizontal">
 
-  <!-- Future lesson will create directives to allow user to edit inputs in a more intelligent way -->
+  <!-- Custom directive for interacting with the form -->
+  <!-- 'live' attribute is because this directive will also be used for update, and we want updates to be saved as user types -->
+  <form-field record="contact" field="firstName" live="false" required="true"></form-field>
 
   <div class="row form-group">
     <div class="col-sm-offset-2">
