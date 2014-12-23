@@ -9,7 +9,7 @@
   <!-- Optional fields, filter to eliminate required fields appearing as dupes in this list -->
   <form-field ng-repeat='(k,v) in contact | keyFilter: "firstName" | keyFilter: "lastName" ' record='contact' field='{{k}}'></form-field>
 
-  <!-- <new-field record='contact' live='false'></new-field> -->
+  <new-field record='contact' live='false'></new-field>
 
   <div class='row form-group'>
     <div class='col-sm-offset-2'>
