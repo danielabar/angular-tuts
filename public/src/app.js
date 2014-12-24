@@ -8,6 +8,10 @@ angular.module('ContactsApp', ['ngRoute', 'ngResource', 'ngMessages'])
       .when('/contact/new', {
         controller: 'NewController',
         templateUrl: 'views/new.html'
+      })
+      .when('/contact/:id', {
+        controller: 'SingleController',
+        templateUrl: 'views/single.html'
       });
 
       // So we don't get ugly hash bang in urls

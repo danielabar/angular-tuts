@@ -29,7 +29,7 @@ router
 router
   .route('/contact/:id')
     .get(function(req, res) {
-      db.findOne(parseInt(req.params.id, 10), function(err, data) {
+      db.findOne({ id: parseInt(req.params.id, 10)}, function(err, data) {
         res.json(data);
       });
     })
@@ -37,13 +37,13 @@ router
       var contact = req.body;
       delete contact.$promise;
       delete contact.$resolved;
-      db.update(parseInt(req.params.id, 10), contact, function(err, data) {
+      db.update({ id: parseInt(req.params.id, 10)}, contact, function(err, data) {
         // db.update supports updating array of items, but we only updated one so return that first one
         res.json(data[0]);
       });
     })
     .delete(function(req, res) {
-      db.delete(req.dbQuery, function() {
+      db.delete({ id: parseInt(req.params.id, 10)}, function() {
         res.json(null);
       });
     })
