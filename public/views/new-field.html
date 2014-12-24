@@ -14,12 +14,13 @@
   </div>
 
   <div class='row form-group'>
-    <div class='btn-group col-sm-offset-2 dropup'>
-      <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-        Add New Field <span class='caret'></span>
+    <div class="col-sm-offset-2 dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Add New Field
+        <span class="caret"></span>
       </button>
-      <ul class='dropdowm-menu'>
-        <li ng-repeat='(k,v) in types'><a ng-click='show(k)'>{{v[0]}}</a></li>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role='presentation' ng-repeat='(k,v) in types'><a role='menuitem' tabindex='-1' ng-click='show(k)'>{{v[0]}}</a></li>
       </ul>
     </div>
   </div>

@@ -49,42 +49,44 @@ angular.module('ContactsApp')
         };
       }
     };
+  })
+  .directive('newField', function($filter, FieldTypes) {
+    return {
+      restrict: 'EA',
+      templateUrl: 'views/new-field.html',
+      replace: true,
+      scope: {
+        record: '=',
+        live: '@'
+      },
+      // we need access to a form value, caret means its value is a parent of this directive
+      // for example, in new.html, <new-field...> element is a child of <form...> so we now have access to the form element
+      require: '^form',
+      link: function($scope, element, attr, form) {
+        $scope.types = FieldTypes;
+        $scope.field = {};
+
+        $scope.show = function(type) {
+          $scope.field.type = type;
+          $scope.display = true;
+        };
+
+        $scope.remove = function() {
+          $scope.field = {};
+          $scope.display = false;
+        };
+
+        $scope.add = function() {
+          if (form.newField.$valid) {
+            $scope.record[$filter('camelCase')($scope.field.name)] = [$scope.field.value, $scope.field.type];
+            $scope.remove();
+            if ($scope.live !== 'false') {
+              $scope.record.$update(function(updatedRecord) {
+                $scope.record = updatedRecord;
+              });
+            }
+          }
+        };
+      }
+    };
   });
-  // .directive('newField', function($filter, FieldTypes) {
-  //   return {
-  //     restrict: 'EA',
-  //     templateUrl: 'views/new-field.html',
-  //     replace: true,
-  //     scope: {
-  //       record: '=',
-  //       live: '@'
-  //     },
-  //     require: '^form',
-  //     link: function($scope, element, attr, form) {
-  //       $scope.types = FieldTypes;
-  //       $scope.field = {};
-
-  //       $scope.show = function(type) {
-  //         $scope.field.type = type;
-  //         $scope.display = true;
-  //       };
-
-  //       $scope.remove = function() {
-  //         $scope.field = {};
-  //         $scope.display = false;
-  //       };
-
-  //       $scope.add = function() {
-  //         if (form.newField.$valid) {
-  //           $scope.record[$filter('camelCase')($scope.field.name)] = [$scope.field.value, $scope.field.type];
-  //           $scope.remove();
-  //           if ($scope.live !== 'false') {
-  //             $scope.record.$update(function(updatedRecord) {
-  //               $scope.record = updatedRecord;
-  //             });
-  //           }
-  //         }
-  //       };
-  //     }
-  //   };
-  // });

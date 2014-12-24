@@ -6,6 +6,16 @@ angular.module('ContactsApp')
       return input[0].toUpperCase() + input.slice(1);
     }
   })
+  // First Name -> firstName
+  // first name -> firstName
+  // FIRST NAME -> firstName
+  .filter('camelCase', function() {
+    return function(input) {
+      return input.toLowerCase().replace(/ (\w)/g, function(match, letter) {
+        return letter.toUpperCase();
+      });
+    }
+  })
   // Sample usage   ng-repeat='(k,v) in contact | keyFilter: "firstName" '
   // Where contact is the obj and firstName is the query
   .filter('keyFilter', function() {
