@@ -43,7 +43,7 @@ angular.module('ContactsApp')
       }
     }
   })
-  .controller('SingleController', function($scope, $location, Contact, $routeParams) {
+  .controller('SingleController', function($scope, $rootScope, $location, Contact, $routeParams) {
     $rootScope.PAGE = "edit";
     $scope.contact = Contact.get({ id : parseInt($routeParams.id, 10) });
     $scope.delete = function() {
