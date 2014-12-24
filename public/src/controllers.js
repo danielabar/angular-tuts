@@ -1,6 +1,6 @@
 angular.module('ContactsApp')
-  .controller('ListController', function($scope, Contact, $location) {
-
+  .controller('ListController', function($scope, $rootScope, Contact, $location) {
+    $rootScope.PAGE = "all";
     // Get all contacts
     $scope.contacts = Contact.query();
 
@@ -19,7 +19,8 @@ angular.module('ContactsApp')
       $location.url('/contact/' + id);
     };
   })
-  .controller('NewController', function($scope, Contact, $location) {
+  .controller('NewController', function($scope, $rootScope, Contact, $location) {
+    $rootScope.PAGE = "new";
 
     // Create an empty Contact resource for user to fill in, note that field types correspond to html5 input types
     $scope.contact = new Contact({
@@ -43,6 +44,7 @@ angular.module('ContactsApp')
     }
   })
   .controller('SingleController', function($scope, $location, Contact, $routeParams) {
+    $rootScope.PAGE = "edit";
     $scope.contact = Contact.get({ id : parseInt($routeParams.id, 10) });
     $scope.delete = function() {
       $scope.contact.$delete();

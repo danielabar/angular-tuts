@@ -14,9 +14,18 @@
 <body>
 
   <div class="container">
+
+    <!-- Header -->
     <div class="page-header">
       <h1>Contacts</h1>
     </div>
+
+    <!-- Navigation (ng-include is like a one-off view) -->
+    <div class="row">
+      <div class="col-sm-12" ng-include='"views/nav.html"'></div>
+    </div>
+
+    <!-- Main Content -->
     <div class="row">
       <!-- Contents of this div will change as route changes -->
       <div class="col-sm-12" ng-view></div>
