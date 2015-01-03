@@ -1,9 +1,6 @@
 {
   "name": "angular-tuts",
   "version": "0.0.0",
-  "authors": [
-    "Daniela Baron <baron.daniela@gmail.com>"
-  ],
   "description": "Learning Angular with TutsPlus",
   "license": "MIT",
   "private": true,
